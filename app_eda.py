@@ -66,11 +66,12 @@ def run_app_eda():
 
     st.markdown(' ##### ◎ 전체 남 녀 온라인 오프라인 구매 수 ')
     fig = plt.figure()
-    sns.countplot(x='PRCHS_MTH_NM',hue='SEXDSTN_FLAG_CD',data= df)
+    sns.countplot(x='PRCHS_MTH_NM',hue='SEXDSTN_FLAG_CD',data= df.sort_values('HSHLD_INCOME_DGREE_NM'))
     plt.title('온라인 오프라인 구매 수')
     plt.xlabel('온라인 오프라인')
     plt.ylabel('구매 수')
     st.pyplot(fig)
+
 
 
     ### 남성 데이터
@@ -106,6 +107,45 @@ def run_app_eda():
     fig = plt.figure()
     sns.countplot(x = '구매방법', hue = column1, data= df_m)
     st.pyplot(fig)
+
+
+
+
+    ### 여성 데이터
+    st.markdown(' ##### ◎ 여성의 구매 내역')
+
+    # 데이터 가져오기
+    df_f = (df.loc[   df['SEXDSTN_FLAG_CD'] == 'F',  ]).iloc[ : , 2:]
+    # print(df_m.columns)
+    df_f_age = df_f.sort_values('AGRDE_FLAG_NM')
+
+
+    ## 여성 나이대 분포
+    st.markdown(' ###### ● 여성의 나이대 분포')
+    fig = plt.figure()
+    df_f_age['AGRDE_FLAG_NM'].hist()
+    plt.title('여성의 나이대 분포 히스토그램')
+    plt.xlabel('나이대')
+    plt.ylabel('인원')
+    st.pyplot(fig)
+
+
+    ## 여성 데이터들
+    df_f = df_f.iloc[ : , 2:]
+    df_f = df_f.rename(  columns =  { 'ANSWRR_OC_AREA_NM':'거주 지역', 'HSHLD_INCOME_DGREE_NM':'가구 소득', 'PRCHS_MTH_NM': '구매방법',
+                          'BOOK_DISC_DVD_PRCHS_AT': '서적음반DVD구매여부', 'PBLPRFR_DSPY_EXPRN_PRCHS_AT':'공연전시체험구매여부',
+                          'GAME_PRCHS_AT': '게임구매여부', 'MUSIC_STRMNG_DWLD_VCH_PRCHS_AT':'음악스트리밍다운로드이용권구매여부',
+                          'MVP_STRMNG_DWLD_VCH_PRCHS_AT': '동영상스트리밍다운로드이용권구매여부', 'CLTUR_DGTL_CNTNTS_ETC_PRCHS_AT': '기타구매여부'}  )
+    df_f_col_list = df_f.columns.tolist()
+    # print(df_f_col_list)
+
+
+    st.markdown(' ###### ● 여성 온/오프라인 구매 현황')
+    column3 = st.radio('원하시는 정보를 선택하세요', df_f_col_list)
+    fig = plt.figure()
+    sns.countplot(x = '구매방법', hue = column3, data= df_f)
+    st.pyplot(fig)
+
 
 
 
@@ -158,28 +198,45 @@ def run_app_eda():
     # 구매 내역 차트
     st.markdown(' ##### ◎ 구매 내역 차트')
 
-    df_11 = df_1.iloc[ : , 1:4]
-    df_111 = (df_11.columns).tolist()
+    df_11 = df_1.iloc[ : , 1:4]  
+    # print(df_11.columns)
+    df_1_list                          # 책/공연/음악/동영상/기타 컨텐츠 구매 
+    df_111 = (df_11.columns).tolist()  # 나이대, 거주지역, 가구소득
     df_1_phse = df_1.loc[  df_1[columns2] == 'Y',  ]
 
+    # 책 구매하는사람의 나이대 별 구매내역
+    # plt.figure(figsize=(16,6))
+    # sns.countplot(x='AGRDE_FLAG_NM',hue='BOOK_DISC_DVD_PRCHS_AT',data= df_book)
+    # plt.show()
+
     # 라디오버튼 수평으로 놓고 라디오 버튼 누르면 차트 나타나게 해보기
+    st.text('● 원하시는 정보를 선택 해 주세요')
+    user_info = st.radio(label = '구매자 정보', options = df_111)
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', 
+             unsafe_allow_html=True)
+    contents_info = st.radio(label = '디지털컨텐츠 구매 종류', options = df_1_list)
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', 
+             unsafe_allow_html=True)
     
-
-
-
-
-
-
-
-
-
-
-    st.subheader('▷ 데이터 출처')
+    fig = plt.figure()
+    sns.countplot(x=user_info, hue=contents_info, data= df_1.sort_values('나이대'))
+    st.pyplot(fig)
 
 
     st.subheader('▷ 결론')
-    st.text('  ')
-    st.text('  ')
+    st.markdown('###### 1. 남성의 경우  ')
+    st.markdown(' - 40대가 가장 컨텐츠 구매를 많이 함  ')
+    st.markdown(' - 300만원 미만 소득자가 가장 많이 구매함  ')
+    st.markdown(' - 구매 방법에는 딱히 선호하는 방법은 없음  ')
+    st.markdown(' - 부산에서 굉장히 많이 구매했으나, 여기있는 데이터로는 왜 그런지 알 수 없음  ')
+    st.markdown('###### 2. 여성의 경우  ')
+    st.markdown(' - 40대, 50대에서 가장 많이 구매함 ')
+    st.markdown(' - 남성에 비해 전 소득구간에서 구매수 차이가 적음 ')
+    st.markdown(' - 강원도와 부산에서 구매를 많이 했는데, 왜인지는 알 수 없음 ')
+    st.markdown(' 대부분 여성이 남성보다 컨텐츠 소비가 많았으나 게임과 동영상스트리밍 부분에서는 남성의 소비가 더 많았음. ')
+    st.markdown(' 서적음반과 공연전시의 경우 전 연령대에서 고르게 소비했으나게임, 음악스트리밍, 동영상스트리밍의 경우 나이대가 올라갈수록소비가 줄어드는것을 알 수 있음 ')
+
+
 
 # 결론
 # ** 는 && 와 관계가 있다
