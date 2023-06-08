@@ -12,7 +12,7 @@ import seaborn as sns
 import streamlit as st
 
 from app_home import run_app_home
-# from app_eda import run_app_eda
+from app_eda import run_app_eda
 # from app_ml import run_app_ml
 
 # # 한글깨짐
@@ -40,8 +40,8 @@ def main():
         run_app_home()
 
 
-#     elif choice == menu[1] :
-#         run_app_eda()
+    elif choice == menu[1] :
+        run_app_eda()
 
 
 #     else :
