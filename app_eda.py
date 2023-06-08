@@ -37,11 +37,11 @@ def run_app_eda():
     st.subheader('▷ 데이터의 기본 정보 확인')
     
     # 데이터 가져오기
-    df01 = pd.read_csv('data\CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202301.csv', 
+    df01 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202301.csv', 
                      encoding = 'utf-8')
-    df02 = pd.read_csv('data\CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202302.csv', 
+    df02 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202302.csv', 
                      encoding = 'utf-8')
-    df03 = pd.read_csv('data\CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202303.csv', 
+    df03 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202303.csv', 
                      encoding = 'utf-8')
     df_1 = pd.concat([df01,df02], ignore_index=True)
     df = pd.concat([df_1,df03], ignore_index=True)
@@ -49,7 +49,7 @@ def run_app_eda():
     index_no = df[ df['HSHLD_INCOME_DGREE_NM'] == '무응답' ].index
     df = df.drop(index_no)
     # 컬럼 정의서 불러오기
-    col = pd.read_csv('data\구입 문화디지털 컨텐츠 종류_컬럼정의서.csv', encoding = 'utf-8')
+    col = pd.read_csv('data/구입 문화디지털 컨텐츠 종류_컬럼정의서.csv', encoding = 'utf-8')
     # 원본 데이터 컬럼 이름 변경하기
 
     
