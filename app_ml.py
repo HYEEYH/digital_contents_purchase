@@ -1,6 +1,6 @@
 
 ### digital_contents_purchase구매내역 앱 대시보드
-### 예측 화면
+### 예측 탭
 
 ### 사용 라이브러리 ----------------------------
 
@@ -18,11 +18,15 @@ from sklearn.cluster import KMeans
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
+# AWS에서 돌릴때 차트에 한글 나오는 코드
 import platform
 from matplotlib import font_manager, rc
 plt.rcParams['axes.unicode_minus'] = False
 if platform.system() == 'Linux':
     rc('font', family='NanumGothic')
+
+# # 로컬로 돌릴때 차트에 한글 나오는 코드
+# plt.rcParams['font.family'] = 'Malgun Gothic'
 # --------------------------------------------
 
 
