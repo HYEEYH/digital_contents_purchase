@@ -17,6 +17,12 @@ from sklearn.cluster import KMeans
 
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+
+import platform
+from matplotlib import font_manager, rc
+plt.rcParams['axes.unicode_minus'] = False
+if platform.system() == 'Linux':
+    rc('font', family='NanumGothic')
 # --------------------------------------------
 
 

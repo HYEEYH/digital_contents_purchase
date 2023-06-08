@@ -50,3 +50,9 @@ def main():
 
 if __name__ == '__main__' :
     main()
+
+
+
+import matplotlib
+print(matplotlib.__version__)
+print(matplotlib.__file__)
