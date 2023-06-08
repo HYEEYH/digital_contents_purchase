@@ -38,14 +38,14 @@ def run_app_ml():
     st.subheader('▷ 상관관계 확인')
     #
     # 데이터 불러오기
-    df01 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202301.csv', 
+    df = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202301.csv', 
                      encoding = 'utf-8')
-    df02 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202302.csv', 
-                     encoding = 'utf-8')
-    df03 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202303.csv', 
-                     encoding = 'utf-8')
-    df_1 = pd.concat([df01,df02], ignore_index=True)
-    df = pd.concat([df_1,df03], ignore_index=True)
+    # df02 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202302.csv', 
+    #                  encoding = 'utf-8')
+    # df03 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202303.csv', 
+    #                  encoding = 'utf-8')
+    # df_1 = pd.concat([df01,df02], ignore_index=True)
+    # df = pd.concat([df_1,df03], ignore_index=True)
 
     # 소득수준 무응답 행 드롭
     index_no = df[ df['HSHLD_INCOME_DGREE_NM'] == '무응답' ].index

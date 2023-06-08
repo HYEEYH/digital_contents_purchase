@@ -37,14 +37,14 @@ def run_app_eda():
     st.subheader('▷ 데이터의 기본 정보 확인')
     
     # 데이터 가져오기
-    df01 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202301.csv', 
+    df = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202301.csv', 
                      encoding = 'utf-8')
-    df02 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202302.csv', 
-                     encoding = 'utf-8')
-    df03 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202303.csv', 
-                     encoding = 'utf-8')
-    df_1 = pd.concat([df01,df02], ignore_index=True)
-    df = pd.concat([df_1,df03], ignore_index=True)
+    # df02 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202302.csv', 
+    #                  encoding = 'utf-8')
+    # df03 = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202303.csv', 
+    #                  encoding = 'utf-8')
+    # df_1 = pd.concat([df01,df02], ignore_index=True)
+    # df = pd.concat([df_1,df03], ignore_index=True)
     # 무응답 행 드롭하기
     index_no = df[ df['HSHLD_INCOME_DGREE_NM'] == '무응답' ].index
     df = df.drop(index_no)
@@ -229,17 +229,14 @@ def run_app_eda():
     st.subheader('▷ 결론')
     st.markdown('##### 1. 남성의 경우  ')
     st.markdown(' - 40대가 가장 컨텐츠 구매를 많이 함  ')
-    st.markdown(' - 300만원 미만 소득자가 가장 많이 구매함  ')
+    st.markdown(' - 300만원 미만 소득자가 가장 많이 구매했고, 그 다음은 700만원 이상 소득자가 많이 구매함.  ')
     st.markdown(' - 구매 방법에는 딱히 선호하는 방법은 없음  ')
-    st.markdown(' - 부산에서 굉장히 많이 구매했음  ')
+    st.markdown(' - 강원도와 부산에서 굉장히 많이 구매했음  ')
     st.markdown('##### 2. 여성의 경우  ')
     st.markdown(' - 40대, 50대에서 가장 많이 구매함 ')
-    st.markdown(' - 남성에 비해 전 소득구간에서 구매수 차이가 적음 ')
+    st.markdown(' - 소득이 올라갈수록 컨텐츠 구매도 증가하는 경향이 있음 ')
     st.markdown(' - 강원도와 부산에서 구매를 많이 함 ')
     st.markdown(' → 대부분 여성이 남성보다 컨텐츠 소비가 많았으나, 게임과 동영상스트리밍 부분에서는 남성의 소비가 더 많았음. ')
     st.markdown(' → 서적음반과 공연전시의 경우 전 연령대에서 고르게 소비했으나 게임, 음악스트리밍, 동영상스트리밍의 경우 나이대가 올라갈수록소비가 줄어드는것을 알 수 있음 ')
+    st.markdown(' → 거주지역별 구매내역을 확인 해 보았을때 강원도와 부산에서 컨텐츠를 많이 구매 한 이유는 그 지역의 응답 수가 많아서 그렇게 보이는 것이라 추측.')
 
-
-
-# 결론
-# ** 는 && 와 관계가 있다
