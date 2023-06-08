@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-# from app_home import run_app_home
+from app_home import run_app_home
 # from app_eda import run_app_eda
 # from app_ml import run_app_ml
 
@@ -36,8 +36,8 @@ def main():
     choice = st.sidebar.selectbox('원하는 페이지를 선택하세요', menu)
 
 
-#     if choice == menu[0] :
-#         run_app_home()
+    if choice == menu[0] :
+        run_app_home()
 
 
 #     elif choice == menu[1] :
