@@ -48,5 +48,5 @@ def main():
 #         run_app_ml()
 
 
-# if __name__ == '__main__' :
-#     main()
+if __name__ == '__main__' :
+    main()
