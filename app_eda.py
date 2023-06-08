@@ -7,34 +7,31 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 import streamlit as st
-import openpyxl
-
-from PIL import Image
+import seaborn as sns
 
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
-# # 한글깨짐
 
+# 한글깨짐
 import platform
 from matplotlib import font_manager, rc
 plt.rcParams['axes.unicode_minus'] = False
 if platform.system() == 'Linux':
     rc('font', family='NanumGothic')
 
-
-# # --------------------------------------------
+# --------------------------------------------
 
 
 
 def run_app_eda():
-    # st.title('디지털 컨텐츠 구매 내역 앱')
-    st.header('디지털 컨텐츠 구매 내역 데이터 분석')
+
+    st.subheader('디지털 컨텐츠 구매 내역 데이터 분석')
 
 
-    #####
-    st.subheader('▷ 데이터의 기본 정보 확인')
+
+    ##### 데이터 기본정보
+    st.markdown('#### ▷ 데이터의 기본 정보 확인')
     
     # 데이터 가져오기
     df = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202301.csv', 
@@ -45,16 +42,17 @@ def run_app_eda():
     #                  encoding = 'utf-8')
     # df_1 = pd.concat([df01,df02], ignore_index=True)
     # df = pd.concat([df_1,df03], ignore_index=True)
+
     # 무응답 행 드롭하기
     index_no = df[ df['HSHLD_INCOME_DGREE_NM'] == '무응답' ].index
     df = df.drop(index_no)
     df = df.iloc[ : 1000, : ]      # 데이터가 너무 커서 ec2에서 안돌아가는거같아서 수를 줄임.
     # 컬럼 정의서 불러오기
     col = pd.read_csv('data/구입 문화디지털 컨텐츠 종류_컬럼정의서.csv', encoding = 'utf-8')
-    # 원본 데이터 컬럼 이름 변경하기
+
 
     
-    # 화면에 표시하기
+    ### 화면에 표시하기
     st.dataframe( df )
 
     if st.checkbox('컬럼의 정보를 확인하고 싶으시면 체크박스를 눌러주세요') :
@@ -64,11 +62,10 @@ def run_app_eda():
 
  
 
-
     ##### 성별에 따른 정보
-    st.subheader('▷ 성별에 따른 디지털 컨텐츠 구매 정보')
+    st.markdown('#### ▷ 성별에 따른 온/오프라인 구매 정보')
 
-    st.markdown(' #### 전체 남 녀 온라인 오프라인 구매 수 ')
+    st.markdown(' ##### ◎ 전체 남 녀 온라인 오프라인 구매 수 ')
     fig = plt.figure()
     sns.countplot(x='PRCHS_MTH_NM',hue='SEXDSTN_FLAG_CD',data= df.sort_values('HSHLD_INCOME_DGREE_NM'))
     plt.title('온라인 오프라인 구매 수')
@@ -156,7 +153,7 @@ def run_app_eda():
 
 
     ##### 가장 많이 구매한 컨텐츠
-    st.subheader('▷ 가장 많이 구매한 컨텐츠')
+    st.markdown('#### ▷ 컨텐츠 구매 분석')
     st.markdown(' ##### ◎ 남/녀 디지털 콘텐츠 구매 비율')
 
     df_1 = (df.iloc[ : , 2: ]).rename(  columns =  {'SEXDSTN_FLAG_CD':'성별',
@@ -171,20 +168,6 @@ def run_app_eda():
                                    'MVP_STRMNG_DWLD_VCH_PRCHS_AT': '동영상스트리밍다운로드이용권구매여부', 
                                    'CLTUR_DGTL_CNTNTS_ETC_PRCHS_AT': '기타구매여부'}  )
     
-    # print(df_1.columns)
-
-    # 카운트플롯
-
-    # 파이차트 그리기 순서 참고---------
-    # df_book = df.loc[  df['BOOK_DISC_DVD_PRCHS_AT'] == 'Y',  ]
-    # df_book_pie = df_book[['SEXDSTN_FLAG_CD']]
-    # df_book_pie_m = df_book_pie.loc[ df_book_pie['SEXDSTN_FLAG_CD'] == 'M' , ]
-    # [df_1['성별'] == 'M', ]
-    # [df_1['성별'] == 'F', ]
-    # df_1_pie_m = (df.loc[  df[df_1_list] == 'Y',  ][['성별']]).loc[ (df.loc[  df[df_1_list] == 'Y',  ][['성별']])['성별'] == 'M' , ]
-    # df_1_pie_f = (df.loc[  df[df_1_list] == 'Y',  ][['성별']]).loc[ (df.loc[  df[df_1_list] == 'Y',  ][['성별']])['성별'] == 'F' , ]
-    # df_1_pie_list = [df_1_pie_m.shape[0], df_1_pie_f.shape[0] ]
-    # -------------------------------------------------------------
 
     a = df_1.iloc[ : , 5: ]
     b = a.columns
@@ -204,14 +187,11 @@ def run_app_eda():
 
     df_11 = df_1.iloc[ : , 1:4]  
     # print(df_11.columns)
+
     df_1_list                          # 책/공연/음악/동영상/기타 컨텐츠 구매 
     df_111 = (df_11.columns).tolist()  # 나이대, 거주지역, 가구소득
     df_1_phse = df_1.loc[  df_1[columns2] == 'Y',  ]
 
-    # 책 구매하는사람의 나이대 별 구매내역
-    # plt.figure(figsize=(16,6))
-    # sns.countplot(x='AGRDE_FLAG_NM',hue='BOOK_DISC_DVD_PRCHS_AT',data= df_book)
-    # plt.show()
 
     # 라디오버튼 수평으로 놓고 라디오 버튼 누르면 차트 나타나게 해보기
     st.text('● 원하시는 정보를 선택 해 주세요')
@@ -227,7 +207,7 @@ def run_app_eda():
     st.pyplot(fig)
 
 
-    st.subheader('▷ 결론')
+    st.markdown('#### ▷ 결론')
     st.markdown('##### 1. 남성의 경우  ')
     st.markdown(' - 40대가 가장 컨텐츠 구매를 많이 함  ')
     st.markdown(' - 300만원 미만 소득자가 가장 많이 구매했고, 그 다음은 700만원 이상 소득자가 많이 구매함.  ')

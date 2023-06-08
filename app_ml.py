@@ -31,11 +31,11 @@ if platform.system() == 'Linux':
 
 
 def run_app_ml():
-    st.header('디지털 컨텐츠 구매 예측')
+    st.subheader('디지털 컨텐츠 구매 예측')
     # st.subheader('▷ 사용 모델')
 
     ##### 상관관계 확인
-    st.subheader('▷ 상관관계 확인')
+    st.markdown('#### ▷ 상관관계 확인')
     #
     # 데이터 불러오기
     df = pd.read_csv('data/CI_PRCHS_CLTUR_DGTL_CNTNTS_KND_INFO_202301.csv', 
@@ -108,7 +108,7 @@ def run_app_ml():
 
 
     ##### 컨텐츠 구매 예측
-    st.subheader('▷ 컨텐츠 구매 예측')
+    st.markdown('#### ▷ 컨텐츠 구매 예측')
     st.markdown('이미 구매한 컨텐츠를 입력받아 앞으로 구매할 컨텐츠를 예측')
     st.markdown('##### 서적음반DVD를 구매할 가능성은 얼마나 될까? ')
     # 온/오프라인 구매 내역 입력 받기
@@ -117,46 +117,40 @@ def run_app_ml():
         onoff = 1      # 컴퓨터가 알아듣도록 성별을 숫자로 바꿔줌
     else :
         onoff = 0
-    # # 책 구매내역 입력받기
-    # book = st.radio( '서적음반DVD 구매여부', [  '없음', '있음'  ]  ) 
-    # if book == '없음' :
-    #     book = 0      # 컴퓨터가 알아듣도록 성별을 숫자로 바꿔줌
-    # else :
-    #     book = 1
     # 공연 구매내역 입력받기
     play = st.radio( '공연전시체험 구매여부', [  '없음', '있음'  ]  ) 
     if play == '없음' :
-        play = 0      # 컴퓨터가 알아듣도록 성별을 숫자로 바꿔줌
+        play = 0      
     else :
         play = 1
     # 게임 구매 내역 입력받기
     game = st.radio( '게임 구매여부', [  '없음', '있음'  ]  ) 
     if game == '없음' :
-        game = 0      # 컴퓨터가 알아듣도록 성별을 숫자로 바꿔줌
+        game = 0      
     else :
         game = 1
     # 음악 스트리밍 구매 여부
     music = st.radio( '음악스트리밍다운로드이용권 구매여부', [  '없음', '있음'  ]  ) 
     if music == '없음' :
-        music = 0      # 컴퓨터가 알아듣도록 성별을 숫자로 바꿔줌
+        music = 0      
     else :
         music = 1
     # 동영상 스트리밍 구매 여부
     video = st.radio( '동영상스트리밍다운로드이용권 구매여부', [  '없음', '있음'  ]  ) 
     if video == '없음' :
-        video = 0      # 컴퓨터가 알아듣도록 성별을 숫자로 바꿔줌
+        video = 0      
     else :
         video = 1
     # 기타 컨텐츠 구매 여부
     ect = st.radio( '기타컨텐츠 구매여부', [  '없음', '있음'  ]  ) 
     if ect == '없음' :
-        ect = 0      # 컴퓨터가 알아듣도록 성별을 숫자로 바꿔줌
+        ect = 0      
     else :
         ect = 1   
 
 
     ### 예측하기
-    if st.button('금액 예측'):
+    if st.button('구매 확률 예측'):
 
         # 입력받은 정보로 행렬 만들기
         new_data = np.array([onoff, play, game, music, video, ect])   # 1차원
@@ -210,6 +204,7 @@ def run_app_ml():
 
 
 
+
     X2 = df_I.iloc[ : , 0: ]
     X2 = X2[['성별', '구매방법', '공연전시체험구매여부', '게임구매여부', 
                     '음악스트리밍다운로드이용권구매여부', 
@@ -226,6 +221,8 @@ def run_app_ml():
     y_pred2 = kmeans.fit_predict(X2_scaled)
     df_IN['Group'] = y_pred2  # 그룹정보를 컬럼 하나 생성해서 넣어줌
 
+
+    ### 그룹정보를 추가한 데이터프레임 보기
     st.markdown('#### ▶ 그룹정보 추가한 데이터프레임 보기')
     st.dataframe(df_IN)
 
