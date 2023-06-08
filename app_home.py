@@ -10,17 +10,17 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-# from PIL import Image
+from PIL import Image
 
 # --------------------------------------------
 
 
-# def run_app_home():
-#     # st.title('디지털 컨텐츠 구매 내역 앱')
+def run_app_home():
+    # st.title('디지털 컨텐츠 구매 내역 앱')
 
-#     st.subheader('디지털컨텐츠 구매내역 앱에 오신걸 환영합니다.')
-#     img = Image.open('data/image1.PNG')
-#     st.image(img)
+    st.subheader('디지털컨텐츠 구매내역 앱에 오신걸 환영합니다.')
+    img = Image.open('data/image1.PNG')
+    st.image(img)
     
 #     st.markdown(' #### ▶ 목 차 ')
 #     st.markdown(' ##### ◎ EDA ')

@@ -28,9 +28,9 @@ import openpyxl
 
 
 
-# def run_app_eda():
-#     # st.title('디지털 컨텐츠 구매 내역 앱')
-#     st.header('디지털 컨텐츠 구매 내역 데이터 분석')
+def run_app_eda():
+    # st.title('디지털 컨텐츠 구매 내역 앱')
+    st.header('디지털 컨텐츠 구매 내역 데이터 분석')
 
 
 #     #####

@@ -20,9 +20,9 @@ from sklearn.model_selection import train_test_split
 # --------------------------------------------
 
 
-# def run_app_ml():
-#     st.header('디지털 컨텐츠 구매 예측')
-#     # st.subheader('▷ 사용 모델')
+def run_app_ml():
+    st.header('디지털 컨텐츠 구매 예측')
+    # st.subheader('▷ 사용 모델')
 
 #     ##### 상관관계 확인
 #     st.subheader('▷ 상관관계 확인')
