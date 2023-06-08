@@ -13,7 +13,7 @@ import streamlit as st
 
 from app_home import run_app_home
 from app_eda import run_app_eda
-# from app_ml import run_app_ml
+from app_ml import run_app_ml
 
 # # 한글깨짐
 # from matplotlib import font_manager, rc
@@ -44,8 +44,8 @@ def main():
         run_app_eda()
 
 
-#     else :
-#         run_app_ml()
+    else :
+        run_app_ml()
 
 
 if __name__ == '__main__' :
