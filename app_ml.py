@@ -50,6 +50,8 @@ def run_app_ml():
     # 소득수준 무응답 행 드롭
     index_no = df[ df['HSHLD_INCOME_DGREE_NM'] == '무응답' ].index
     df = df.drop(index_no)
+    df = df.iloc[ : 1000, : ]
+    # print(df)
 
     # 컬럼명 한글로 변경
     df1 = (df.iloc[ : , 2: ]).rename(  columns =  {'SEXDSTN_FLAG_CD':'성별',

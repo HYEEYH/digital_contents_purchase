@@ -48,6 +48,7 @@ def run_app_eda():
     # 무응답 행 드롭하기
     index_no = df[ df['HSHLD_INCOME_DGREE_NM'] == '무응답' ].index
     df = df.drop(index_no)
+    df = df.iloc[ : 1000, : ]      # 데이터가 너무 커서 ec2에서 안돌아가는거같아서 수를 줄임.
     # 컬럼 정의서 불러오기
     col = pd.read_csv('data/구입 문화디지털 컨텐츠 종류_컬럼정의서.csv', encoding = 'utf-8')
     # 원본 데이터 컬럼 이름 변경하기
