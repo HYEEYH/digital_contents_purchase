@@ -11,9 +11,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-from app_home import run_app_home
-from app_eda import run_app_eda
-from app_ml import run_app_ml
+# from app_home import run_app_home
+# from app_eda import run_app_eda
+# from app_ml import run_app_ml
 
 # # 한글깨짐
 # from matplotlib import font_manager, rc
@@ -36,17 +36,17 @@ def main():
     choice = st.sidebar.selectbox('원하는 페이지를 선택하세요', menu)
 
 
-    if choice == menu[0] :
-        run_app_home()
+#     if choice == menu[0] :
+#         run_app_home()
 
 
-    elif choice == menu[1] :
-        run_app_eda()
+#     elif choice == menu[1] :
+#         run_app_eda()
 
 
-    else :
-        run_app_ml()
+#     else :
+#         run_app_ml()
 
 
-if __name__ == '__main__' :
-    main()
+# if __name__ == '__main__' :
+#     main()
