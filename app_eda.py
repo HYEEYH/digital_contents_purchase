@@ -54,9 +54,11 @@ def run_app_eda():
     
     # 화면에 표시하기
     st.dataframe( df )
-    st.dataframe( col )
 
-    st.markdown('원본 데이터 중 가구별 소득에 무응답한 가구의 데이터는 드롭하여 따로 저장 한 뒤 분석을 하였습니다.')
+    if st.checkbox('컬럼의 정보를 확인하고 싶으시면 체크박스를 눌러주세요') :
+        st.dataframe( col )
+
+    st.markdown('→ 원본 데이터 중 가구별 소득에 무응답한 가구의 데이터는 드롭하여 따로 저장 한 뒤 분석을 하였습니다.')
 
  
 
@@ -64,7 +66,7 @@ def run_app_eda():
     ##### 성별에 따른 정보
     st.subheader('▷ 성별에 따른 디지털 컨텐츠 구매 정보')
 
-    st.markdown(' ##### ◎ 전체 남 녀 온라인 오프라인 구매 수 ')
+    st.markdown(' #### 전체 남 녀 온라인 오프라인 구매 수 ')
     fig = plt.figure()
     sns.countplot(x='PRCHS_MTH_NM',hue='SEXDSTN_FLAG_CD',data= df.sort_values('HSHLD_INCOME_DGREE_NM'))
     plt.title('온라인 오프라인 구매 수')
@@ -224,17 +226,17 @@ def run_app_eda():
 
 
     st.subheader('▷ 결론')
-    st.markdown('###### 1. 남성의 경우  ')
+    st.markdown('##### 1. 남성의 경우  ')
     st.markdown(' - 40대가 가장 컨텐츠 구매를 많이 함  ')
     st.markdown(' - 300만원 미만 소득자가 가장 많이 구매함  ')
     st.markdown(' - 구매 방법에는 딱히 선호하는 방법은 없음  ')
-    st.markdown(' - 부산에서 굉장히 많이 구매했으나, 여기있는 데이터로는 왜 그런지 알 수 없음  ')
-    st.markdown('###### 2. 여성의 경우  ')
+    st.markdown(' - 부산에서 굉장히 많이 구매했음  ')
+    st.markdown('##### 2. 여성의 경우  ')
     st.markdown(' - 40대, 50대에서 가장 많이 구매함 ')
     st.markdown(' - 남성에 비해 전 소득구간에서 구매수 차이가 적음 ')
-    st.markdown(' - 강원도와 부산에서 구매를 많이 했는데, 왜인지는 알 수 없음 ')
-    st.markdown(' 대부분 여성이 남성보다 컨텐츠 소비가 많았으나 게임과 동영상스트리밍 부분에서는 남성의 소비가 더 많았음. ')
-    st.markdown(' 서적음반과 공연전시의 경우 전 연령대에서 고르게 소비했으나게임, 음악스트리밍, 동영상스트리밍의 경우 나이대가 올라갈수록소비가 줄어드는것을 알 수 있음 ')
+    st.markdown(' - 강원도와 부산에서 구매를 많이 함 ')
+    st.markdown(' → 대부분 여성이 남성보다 컨텐츠 소비가 많았으나, 게임과 동영상스트리밍 부분에서는 남성의 소비가 더 많았음. ')
+    st.markdown(' → 서적음반과 공연전시의 경우 전 연령대에서 고르게 소비했으나 게임, 음악스트리밍, 동영상스트리밍의 경우 나이대가 올라갈수록소비가 줄어드는것을 알 수 있음 ')
 
 
 

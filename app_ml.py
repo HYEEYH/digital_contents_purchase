@@ -83,7 +83,7 @@ def run_app_ml():
 
 
     ### 상관계수 확인하기
-    st.markdown('#### ▶ 상관계수 확인')
+    # st.markdown('#### ▶ 상관계수 확인')
     st.dataframe(df_IN.corr(numeric_only = True))
     if st.checkbox('상관계수를 히트맵으로 확인하기'):
         fig = plt.figure()
@@ -98,7 +98,7 @@ def run_app_ml():
     ##### 컨텐츠 구매 예측
     st.subheader('▷ 컨텐츠 구매 예측')
     st.markdown('이미 구매한 컨텐츠를 입력받아 앞으로 구매할 컨텐츠를 예측')
-    st.markdown('서적음반DVD를 구매할 가능성은 얼마나 될까? ')
+    st.markdown('##### 서적음반DVD를 구매할 가능성은 얼마나 될까? ')
     # 온/오프라인 구매 내역 입력 받기
     onoff = st.radio( '구매 방식', [  '온라인', '오프라인'  ]  ) 
     if onoff == '온라인' :
@@ -208,7 +208,7 @@ def run_app_ml():
 
     ### k개수 선택 옵션
     st.markdown('#### ▶  클러스터링 개수 선택 ')
-    k = st.number_input('k 를 선택', 1, 10, value = 3)
+    k = st.number_input('k 를 선택해주세요', 1, 10, value = 5)
 
     kmeans = KMeans(n_clusters = k, random_state = 5, n_init = 'auto')
     y_pred2 = kmeans.fit_predict(X2_scaled)
