@@ -4,6 +4,7 @@
 개인 프로젝트2 - 디지털컨텐츠 구매 내역
 
 ## 사용 툴
+<div align=center>
 <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white"/>
 <img src="https://img.shields.io/badge/Google Colab-F9AB00?style=flat&logo=googlecolab&logoColor=white"/>
 
