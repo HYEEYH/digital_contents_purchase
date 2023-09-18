@@ -2,6 +2,11 @@
 
 # digital_contents_purchase
 개인 프로젝트2 - 디지털컨텐츠 구매 내역
+<br/><br/><br/>
+
+* 디지털 컨텐츠를 구매한 사람들이 다른 디지털 컨텐츠를 구매할 확률은 얼마나 되는지 예측하는 앱 대시보드 입니다.<br/>
+<a href= "https://drive.google.com/file/d/1WKZkOnatBQTaRcdXXQeS9JwYQLpF5cm1/view">[앱 대시보드 보러 가기]</a><br/>
+<img src="https://github.com/bopool/aws-hellokids-api/assets/130967557/65ea1f81-0585-42a1-b4ab-3b7a2f4aa3d8"  width="700" height="387" /><br/><br/>
 
 ## 사용 툴
 <div align=center>
@@ -33,12 +38,7 @@
 - sklearn을 사용하여 비어있는 변수에 데이터를 학습시켜 regressor를 만듦.
 - KMeans를 이용해 WCSS값 차트를 그려 클러스터 개수를 정하고, 그 개수 대로 그룹을 만듦.
 
-<br/><br/><br/>
 
-## 프리젠테이션
-* 디지털 컨텐츠를 구매한 사람들이 다른 디지털 컨텐츠를 구매할 확률은 얼마나 되는지 예측하는 앱 대시보드 입니다.<br/>
-<a href= "https://drive.google.com/file/d/1WKZkOnatBQTaRcdXXQeS9JwYQLpF5cm1/view">[앱 대시보드 보러 가기]</a><br/>
-<img src="https://github.com/bopool/aws-hellokids-api/assets/130967557/65ea1f81-0585-42a1-b4ab-3b7a2f4aa3d8"  width="700" height="387" /><br/><br/>
 
 ##### 
 <br/><br/><br/>
