@@ -7,6 +7,7 @@
 <div align=center>
 <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white"/>
 <img src="https://img.shields.io/badge/Google Colab-F9AB00?style=flat&logo=googlecolab&logoColor=white"/>
+</div>
 
 ## 사용한 기술
 ### Back-ends
