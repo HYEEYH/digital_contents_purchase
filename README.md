@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Digital%20Contents_Purchase&fontSize=70)
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Digital%20Contents Purchase&fontSize=70)
 
 # digital_contents_purchase
 개인 프로젝트2 - 디지털컨텐츠 구매 내역
