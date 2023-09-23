@@ -6,7 +6,7 @@
 
 * 디지털 컨텐츠를 구매한 사람들이 다른 디지털 컨텐츠를 구매할 확률은 얼마나 되는지 예측하는 앱 대시보드 입니다.<br/>
 <a href= "https://drive.google.com/file/d/1EpSEvDHnr5raoCZTjBcQpefPYu9loMBb/view?usp=drive_link">[시연 영상 보러 가기]</a><br/>
-<img src="https://github.com/bopool/aws-hellokids-api/assets/130967557/65ea1f81-0585-42a1-b4ab-3b7a2f4aa3d8"  width="700" height="439" /><br/><br/>
+<img src="https://github.com/HYEEYH/aws-rekognition-app2/assets/130967557/932a9500-f335-4be6-86e9-754afd4bd228"  width="700" height="439" /><br/><br/>
 
 ## 사용 툴
 <div align=center>
